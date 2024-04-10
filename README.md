@@ -30,12 +30,47 @@ To get started with running this app locally, follow these steps:
 
 ### Running the App
 
+#### Development Server
+
 1. Start the development server:
    ```bash
    npm start
    ```
 
-2. Use the Expo Go app on your iOS or Android device to scan the QR code displayed in the terminal, or use an Android emulator or iOS simulator to run the app.
+#### Android
+
+To run the app on an Android device or emulator:
+
+1. Ensure you have an Android device connected to your computer via USB or an Android emulator set up.
+   
+2. Run the following command to start the app on Android:
+   ```bash
+   npm run android
+   ```
+
+#### iOS
+
+To run the app on an iOS device or simulator:
+
+1. Ensure you have Xcode installed on your macOS system.
+
+2. Run the following command to start the app on iOS:
+   ```bash
+   npm run ios
+   ```
+
+#### Web
+
+To run the app in a web browser:
+
+1. Run the following command to start the app in a web browser:
+   ```bash
+   npm run web
+   ```
+
+#### Expo Go App
+
+Alternatively, you can use the Expo Go app on your iOS or Android device to scan the QR code displayed in the terminal after running `npm start`.
 
 ### Testing
 
@@ -43,6 +78,7 @@ This project includes unit tests for components and integration tests for key fu
 ```bash
 npm test
 ```
+
 
 ## Technologies Used
 
