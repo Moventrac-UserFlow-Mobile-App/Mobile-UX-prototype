@@ -129,9 +129,3 @@ const styles = StyleSheet.create({
 });
 
 export default WorkoutScreen;
-
-
-// https://www.youtube.com/watch?v=dJ1zk4OPSZM, 20mins
-
-// <Text style={styles.exerciseName}>{item.name}</Text>
-//             <Text style={styles.exerciseSets}>Sets: {item.sets}</Text>
