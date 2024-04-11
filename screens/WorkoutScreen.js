@@ -8,21 +8,18 @@ import {
   Image,
   Pressable,
 } from "react-native";
-import { useRoute, useNavigation} from "@react-navigation/native";
+import { useRoute, useNavigation } from "@react-navigation/native";
 import { Ionicons } from "@expo/vector-icons";
 import { FitnessItems } from "../Context";
 import React, { useContext } from "react";
-import { AntDesign } from '@expo/vector-icons';
+import { AntDesign } from "@expo/vector-icons";
 
 const WorkoutScreen = () => {
   const route = useRoute();
   //console.log(route.params)
   const navigation = useNavigation();
-  const {
-    completed,
-    setCompleted,
-  } = useContext(FitnessItems);
-  
+  const { completed, setCompleted } = useContext(FitnessItems);
+
   return (
     <>
       <ScrollView
@@ -129,5 +126,3 @@ const styles = StyleSheet.create({
 });
 
 export default WorkoutScreen;
-
-
