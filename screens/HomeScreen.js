@@ -31,10 +31,9 @@ const HomeScreen = () => {
       <View style={styles.user}>
         <Image style={styles.userimg} source={require("../assets/user.png")} />
         <View>
-          <Text style={styles.welcome}>Welcome Back User!</Text>
+          <Text style={styles.welcome}>Welcome Back (UserName)</Text>
         </View>
       </View>
-
       <PerformanceGraph />
       <Pressable
         onPress={() =>
@@ -87,6 +86,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: "rgba(2,0,3,0.5)",
+    borderRadius: 7,
   },
   user: {
     justifyContent: "center",

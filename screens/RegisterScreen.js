@@ -1,3 +1,5 @@
+//RegisterScreen.js
+
 import React, { useState } from "react";
 import {
   StyleSheet,
@@ -76,17 +78,15 @@ const RegisterScreen = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    backgroundColor: "rgba(2,0,3,0.5)",
+    borderRadius: 7,
   },
   titleContainer: {
     flexDirection: "row",
-    borderRadius: 5,
-    marginBottom: 1,
+    marginTop: 20,
     paddingVertical: 40,
     paddingHorizontal: 130,
-    borderRadius: 5,
-    backgroundColor: "rgba(2,0,3,0.5)",
-    background:
-      "linear-gradient(90deg, rgba(2,0,36,0.5) 0%, rgba(117,145,205,0.5) 35%, rgba(0,212,255,0.5) 100%)",
+    borderRadius: 7,
   },
   blackText: {
     fontSize: 24,
@@ -96,7 +96,10 @@ const styles = StyleSheet.create({
   grayText: {
     fontSize: 24,
     fontWeight: "bold",
-    color: "#515457",
+    color: "#f2f2f2",
+    textShadowColor: "#000000",
+    textShadowOffset: { width: 1, height: -1 },
+    textShadowRadius: 3,
   },
   title: {
     fontSize: 24,
@@ -142,7 +145,7 @@ const styles = StyleSheet.create({
   },
   bodyContainer: {
     flex: 1,
-    backgroundColor: "#3B444B",
+    // backgroundColor: "#3B444B",
     paddingHorizontal: 20,
     paddingVertical: 20,
     borderRadius: 2,

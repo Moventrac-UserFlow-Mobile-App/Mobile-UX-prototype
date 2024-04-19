@@ -1,3 +1,5 @@
+//ForgotPassword
+
 import React from "react";
 import {
   StyleSheet,
@@ -47,21 +49,21 @@ const ForgotPassword = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    backgroundColor: "rgba(2,0,3,0.5)",
+    borderRadius: 7,
   },
   titleContainer: {
     flexDirection: "row",
     marginTop: 70,
-    marginBottom: 1,
     paddingVertical: 40,
     paddingHorizontal: 130,
     borderRadius: 5,
-    backgroundColor: "rgba(2,0,3,0.5)",
     background:
       "linear-gradient(90deg, rgba(2,0,36,0.5) 0%, rgba(117,145,205,0.5) 35%, rgba(0,212,255,0.5) 100%)",
   },
   bodyContainer: {
     flex: 1,
-    backgroundColor: "#3B444B",
+    // backgroundColor: "#3B444B",
     paddingHorizontal: 20,
     paddingVertical: 20,
     borderRadius: 2,
@@ -74,14 +76,18 @@ const styles = StyleSheet.create({
   grayText: {
     fontSize: 24,
     fontWeight: "bold",
-    color: "#515457",
+    color: "#f2f2f2",
+    textShadowColor: "#000000",
+    textShadowOffset: { width: 1, height: -1 },
+    textShadowRadius: 3,
   },
   title: {
     fontSize: 24,
     fontWeight: "bold",
-    marginBottom: 50,
-    marginTop: 50,
+    marginBottom: 70,
+    marginTop: 20,
     textAlign: "center",
+    color: "#3700ff",
   },
   description: {
     marginBottom: 20,
@@ -101,11 +107,12 @@ const styles = StyleSheet.create({
   },
 
   buttonContainer: {
-    width: "100%",
+    width: "60%",
     backgroundColor: "#3498db",
     borderRadius: 10,
     paddingVertical: 10,
     alignItems: "center",
+    marginLeft: 70,
   },
   buttonText: {
     fontSize: 16,

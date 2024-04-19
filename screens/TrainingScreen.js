@@ -72,6 +72,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: "rgba(2,0,3,0.5)",
+    borderRadius: 7,
   },
   user: {
     justifyContent: "center",
