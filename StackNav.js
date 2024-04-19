@@ -10,6 +10,7 @@ import WorkoutScreen from "./screens/WorkoutScreen";
 import FitScreen from "./screens/FitScreen"; 
 import RestScreen from "./screens/RestScreen";
 import ForgotPassword from "./screens/ForgotPassword";
+import TrainingScreen from "./screens/TrainingScreen";
 
 
 const StackNav = () => {
@@ -37,6 +38,11 @@ const StackNav = () => {
         <Stack.Screen
           name="Home"
           component={HomeScreen}
+          options={{ headerShown: false }}
+        />
+        <Stack.Screen
+          name="Training"
+          component={TrainingScreen}
           options={{ headerShown: false }}
         />
         <Stack.Screen

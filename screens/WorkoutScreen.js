@@ -1,24 +1,28 @@
-// WorkoutScreen.js
+//Workoutscreen.js
+
+import React, { useContext } from "react";
 import {
+  ScrollView,
   StyleSheet,
   Text,
   View,
-  SafeAreaView,
-  ScrollView,
   Image,
   Pressable,
 } from "react-native";
 import { useRoute, useNavigation } from "@react-navigation/native";
 import { Ionicons } from "@expo/vector-icons";
 import { FitnessItems } from "../Context";
-import React, { useContext } from "react";
-import { AntDesign } from "@expo/vector-icons";
 
 const WorkoutScreen = () => {
   const route = useRoute();
-  //console.log(route.params)
   const navigation = useNavigation();
-  const { completed, setCompleted } = useContext(FitnessItems);
+  const { completed, setCompleted, setHistoricalData } =
+    useContext(FitnessItems);
+
+  // Function to collect historical data during workouts
+  const collectHistoricalData = (data) => {
+    setHistoricalData((prevData) => [...prevData, data]);
+  };
 
   return (
     <>
@@ -37,10 +41,10 @@ const WorkoutScreen = () => {
           size={24}
           color="white"
         />
-        {/* <View style={styles.exercisesContainer}> */}
         {route.params.excersises.map((item, index) => (
           <Pressable
             style={{ margin: 10, flexDirection: "row", alignItems: "center" }}
+            onPress={() => collectHistoricalData(item.name)} // Collect historical data on press
             key={index}
           >
             <Image
@@ -57,20 +61,18 @@ const WorkoutScreen = () => {
             </View>
 
             {completed.includes(item.name) ? (
-              <AntDesign
+              <Ionicons
                 style={{ marginLeft: 40 }}
-                name="checkcircle"
+                name="checkmark-circle-outline"
                 size={24}
                 color="green"
               />
             ) : null}
           </Pressable>
         ))}
-        {/* </View> */}
       </ScrollView>
 
       <Pressable
-        // onPress={() => console.warn("Pressed")}
         onPress={() => {
           navigation.navigate("Fit", {
             excersises: route.params.excersises,
@@ -101,28 +103,5 @@ const WorkoutScreen = () => {
     </>
   );
 };
-
-const styles = StyleSheet.create({
-  exercisesContainer: {
-    flexDirection: "row",
-    flexWrap: "wrap",
-    justifyContent: "space-evenly",
-    marginTop: 20,
-    paddingHorizontal: 10,
-  },
-  exerciseItem: {
-    alignItems: "center",
-    // marginBottom: 20,
-    margin: 10,
-  },
-  exerciseName: {
-    marginTop: 5,
-    fontWeight: "bold",
-  },
-  exerciseSets: {
-    color: "gray",
-    marginTop: 2,
-  },
-});
 
 export default WorkoutScreen;

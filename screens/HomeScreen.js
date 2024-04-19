@@ -1,44 +1,82 @@
+//HomeScreen.js
 
-import { ScrollView, StyleSheet, Text, View, Image } from "react-native";
-import React, { useContext } from "react";
-import FitnessCards from "../components/FitnessCards";
+import React, { useContext, useState } from "react";
+import {
+  ScrollView,
+  StyleSheet,
+  Text,
+  View,
+  Image,
+  Pressable,
+} from "react-native";
+import fitnessData from "../data/fitness";
 import { FitnessItems } from "../Context";
+import { useNavigation } from "@react-navigation/native";
+import RatingScreen from "./RatingScreen";
+import PerformanceGraph from "./PerformanceGraph";
+import ChatScreen from "./ChatScreen";
+import { Fontisto } from "@expo/vector-icons";
 
 const HomeScreen = () => {
   const { minutes, calories, workout } = useContext(FitnessItems);
+  const navigation = useNavigation();
+  const [chatVisible, setChatVisible] = useState(false); 
+
+  // Example historical data
+  const historicalData = [10, 20, 15, 25, 30];
+  console.log("Historical Data:", historicalData);
 
   return (
-    <ScrollView style={{ flex: 1, marginTop: 50 }}>
-      <View style={styles.container}>
-        <View style={styles.titleContainer}>
-          <Text style={styles.title}>MOVENTRAC</Text>
+    <ScrollView style={styles.container}>
+      <View style={styles.user}>
+        <Image style={styles.userimg} source={require("../assets/user.png")} />
+        <View>
+          <Text style={styles.welcome}>Welcome Back User!</Text>
         </View>
-        <View style={styles.statsContainer}>
-          <View style={styles.stat}>
-            <Text style={styles.statValue}>{workout}</Text>
-            <Text style={styles.statLabel}>WORKOUTS</Text>
-          </View>
-          <View style={styles.stat}>
-            <Text style={styles.statValue}>{calories}</Text>
-            <Text style={styles.statLabel}>KCAL</Text>
-          </View>
-          <View style={styles.stat}>
-            <Text style={styles.statValue}>{minutes}</Text>
-            <Text style={styles.statLabel}>MINS</Text>
-          </View>
-        </View>
-        <View style={styles.imageContainer}>
-          <Image
-            style={styles.image}
-            source={{
-              uri: "https://cdn-images.cure.fit/www-curefit-com/image/upload/c_fill,w_842,ar_1.2,q_auto:eco,dpr_2,f_auto,fl_progressive/image/test/sku-card-widget/gold2.png",
-            }}
-          />
-        </View>
-        <FitnessCards />
-        {/* Extra content to enable scrolling */}
-        <View style={{ height: 1000 }} />
       </View>
+
+      <PerformanceGraph />
+      <Pressable
+        onPress={() =>
+          navigation.navigate("Training", {
+            image:
+              "https://cdn-images.cure.fit/www-curefit-com/image/upload/c_fill,w_842,ar_1.2,q_auto:eco,dpr_2,f_auto,fl_progressive/image/test/sku-card-widget/gold2.png",
+            excersises: fitnessData[0].excersises,
+          })
+        }
+      >
+        <RatingScreen />
+        <Text
+          style={{
+            textAlign: "center",
+            marginTop: 70,
+            fontSize: 20,
+            color: "blue",
+          }}
+        >
+          Back To Training! 
+          
+        </Text>
+      </Pressable>
+
+      {/* Add the chat icon/button */}
+      <Pressable onPress={() => setChatVisible(true)}>
+        {/* <Fontisto
+          name="hipchat"
+          size={24}
+          color="black"
+          style={styles.chatIconOutline}
+        /> */}
+        <Fontisto
+          name="hipchat"
+          size={24}
+          color="orange"
+          style={styles.chatIcon}
+        />
+      </Pressable>
+
+      {/* Render the ChatScreen component */}
+      <ChatScreen visible={chatVisible} onClose={() => setChatVisible(false)} />
     </ScrollView>
   );
 };
@@ -47,60 +85,38 @@ export default HomeScreen;
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: "white",
     flex: 1,
+    backgroundColor: "rgba(2,0,3,0.5)",
   },
-  titleContainer: {
-    backgroundColor: "rgba(2,0,3,0.5)", 
-    background:
-      "linear-gradient(90deg, rgba(2,0,36,0.5) 0%, rgba(117,145,205,0.5) 35%, rgba(0,212,255,0.5) 100%)", // Adjusted alpha values for gradient colors
-    padding: 10,
-    marginTop: 50,
-  },
-  title: {
-    color: "black",
-    fontWeight: "bold",
-    fontSize: 18,
-    marginBottom: 10,
-    textAlign: "center",
-  },
-  statsContainer: {
-    flexDirection: "row",
-    justifyContent: "space-between",
-    alignItems: "center",
-    padding: 20,
-    backgroundColor: "rgba(2,0,36,0.5)",
-    background:
-      "linear-gradient(90deg, rgba(2,0,36,0.5) 0%, rgba(117,145,205,0.5) 35%, rgba(0,212,255,0.5) 100%)", 
-    marginBottom: 10,
-  },
-  stat: {
-    alignItems: "center",
-  },
-  statValue: {
-    fontSize: 20,
-    fontWeight: "bold",
-    color: "##291D70",
-    marginBottom: 14,
-  },
-  statLabel: {
-    fontSize: 14,
-    color: "white",
-  },
-  imageContainer: {
+  user: {
     justifyContent: "center",
     alignItems: "center",
-    marginTop: 5,
+    marginTop: 60,
+    marginBottom: 30,
   },
-  image: {
-    width: "90%",
-    height: 120,
-    borderRadius: 7,
-    marginTop: -20,
+  userimg: {
+    width: 45,
+    height: 45,
+  },
+  welcome: {
+    marginTop: 30,
+    fontSize: 20,
+  },
+  chatIcon: {
+    width: 30,
+    height: 30,
+    position: "absolute",
+    bottom: 30,
+    right: 30,
+  },
+  chatIconOutline: {
+    // width: 30,
+    // height: 34,
+    // position: "absolute",
+    // bottom: 48,
+    // right: 58,
+    // color: "transparent",
+    // borderColor: "orange",
+    // borderWidth: 1,
   },
 });
-
-
-
-
-
