@@ -224,6 +224,13 @@ const WelcomeScreen = () => {
           ]}
           style={styles.backgroundGradient}
         >
+          {/* <ImageBackground
+//           source={{
+//             uri: "https://moventrac.fi/____impro/1/onewebmedia/i287104489311526234.jpg?etag=%2255738-63693ba4%22&sourceContentType=image%2Fpng&quality=85",
+//           }}
+//           style={styles.backgroundImage}
+//           resizeMode="cover"
+//         > */}
           <View style={styles.titleContainer}>
             <Text style={styles.blackText}>{firstFourLetters}</Text>
             <Text style={styles.grayText}>{restOfLetters}</Text>
